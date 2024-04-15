@@ -30,15 +30,15 @@ const controls = new OrbitControls(camera,renderer.domElement);
 const moonTexture = new THREE.TextureLoader().load('moon.jpg');
 
 const moon = new THREE.Mesh(
-    new THREE.SphereGeometry(5,35,35),
-    new THREE.MeshStandardMaterial({
+    new THREE.SphereGeometry(3,32,32),
+    new THREE.MeshBasicMaterial({
         map: moonTexture,
     })
 );
 
 scene.add(moon);
 
-moon.position.z = 10;
+moon.position.z = 30;
 moon.position.setX(-10);
 
 function animate() {
@@ -47,6 +47,10 @@ function animate() {
     
     sun.rotation.x += 0.01;
     sun.rotation.y += 0.01;
+
+    moon.rotation.x += 0.05;
+    moon.rotation.y += 0.075;
+    moon.rotation.z += 0.05;
 
     controls.update();
     renderer.render(scene,camera);
