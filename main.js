@@ -27,19 +27,19 @@ scene.add(sun);
 
 const controls = new OrbitControls(camera,renderer.domElement);
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+const earthTexture = new THREE.TextureLoader().load('Earth.jpg');
 
-const moon = new THREE.Mesh(
+const earth = new THREE.Mesh(
     new THREE.SphereGeometry(3,32,32),
     new THREE.MeshBasicMaterial({
-        map: moonTexture,
+        map: earthTexture,
     })
 );
 
-scene.add(moon);
+scene.add(earth);
 
-moon.position.z = 30;
-moon.position.setX(-10);
+earth.position.z = 15;
+earth.position.setX(-10);
 
 function animate() {
     requestAnimationFrame(animate);
@@ -48,9 +48,9 @@ function animate() {
     sun.rotation.x += 0.01;
     sun.rotation.y += 0.01;
 
-    moon.rotation.x += 0.05;
-    moon.rotation.y += 0.075;
-    moon.rotation.z += 0.05;
+    earth.rotation.x += 0.01;
+    earth.rotation.y += 0.01;
+    earth.rotation.z += 0.01;
 
     controls.update();
     renderer.render(scene,camera);
