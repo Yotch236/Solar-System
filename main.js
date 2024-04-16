@@ -15,14 +15,13 @@ document.body.appendChild(renderer.domElement);
 camera.position.setZ(30);
 
 renderer.render( scene, camera);
-/*GRID HELPER
+//GRID HELPER
 
 const size =500;
 const divisions = 50;
 
 const gridHelper = new THREE.GridHelper(size,divisions);
 scene.add(gridHelper);
-*/
 //SUN
 
 
