@@ -111,6 +111,22 @@ const saturn = new THREE.Mesh(
 
 scene.add(saturn);
 
+
+//SATURN RINGS
+const saturnRingTexture = new THREE.TextureLoader().load("planets/SaturnRing.png");
+const saturnRingGeometry = new THREE.RingGeometry(7.5, 12,50);
+const saturnRingMaterial = new THREE.MeshBasicMaterial({
+    map: saturnRingTexture,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.8
+});
+
+const saturnRings = new THREE.Mesh(saturnRingGeometry, saturnRingMaterial);
+saturnRings.rotation.x = Math.PI /2;
+scene.add(saturnRings);
+saturn.add(saturnRings);
+
 //URANUS
 const uranusTexture = new THREE.TextureLoader().load("planets/Uranus.jpg");
 
@@ -123,6 +139,21 @@ const uranus = new THREE.Mesh(
 
 scene.add(uranus);
 
+//URANUS RING
+
+const uranusRingTexture = new THREE.TextureLoader().load("planets/UranusRing.png");
+const uranusRingGeometry = new THREE.RingGeometry(5.5,9,50);
+const uranusRingMaterial = new THREE.MeshBasicMaterial({
+    map: uranusRingTexture,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.8
+});
+
+const UranusRings = new THREE.Mesh(uranusRingGeometry,uranusRingMaterial);
+UranusRings.rotation.x = Math.PI/2;
+scene.add(UranusRings);
+uranus.add(UranusRings);
 //NEPTUNE
 const neptuneTexture = new THREE.TextureLoader().load("planets/Neptune.jpg");
 
