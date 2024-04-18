@@ -1,6 +1,28 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body,html{
+    overflow-x: hidden;
+    font-family:'Times New Roman', Times, serif;
+}
 canvas{
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
     
+}
+
+nav{
+    color: #fff;
+    z-index: 2;
+    position: relative;
+    font-size: 45px;
+    padding: 4rem 8em;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
 }
