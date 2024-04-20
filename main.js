@@ -15,13 +15,13 @@ document.body.appendChild(renderer.domElement);
 camera.position.setZ(30);
 
 renderer.render( scene, camera);
-/*GRID HELPER
+//GRID HELPER
 
 const size = 900;
 const divisions = 50;
 
 const gridHelper = new THREE.GridHelper(size,divisions);
-scene.add(gridHelper);*/
+scene.add(gridHelper);
 //SUN
 const sunTexture = new THREE.TextureLoader().load("Sun.png");
 
@@ -60,6 +60,17 @@ const venus = new THREE.Mesh(
 
 scene.add(venus);
 
+//MOON
+const moonTexture = new THREE.TextureLoader().load("Moon.png");
+
+const moon = new THREE.Mesh(
+    new THREE.SphereGeometry(1,50,50),
+    new THREE.MeshBasicMaterial({
+        map: moonTexture,
+    })
+);
+
+scene.add(moon);
 
 //EARTH
 const earthTexture = new THREE.TextureLoader().load("planets/Earth.jpg");
@@ -182,16 +193,24 @@ scene.add(pluto);
 const controls = new OrbitControls(camera,renderer.domElement);
 
 function addStar(){
-    const geometry = new THREE.SphereGeometry(0.25,24,24);
+    const geometry = new THREE.SphereGeometry(0.24,50,50);
     const material = new THREE.MeshBasicMaterial( {color: 0xffffff})
     const star = new THREE.Mesh(geometry, material);
 
-    const [x , y , z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 450 ));
+    const [x , y , z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 900 ));
     star.position.set(x,y,z);
     scene.add(star);
 }
 
-Array(900).fill().forEach(addStar)
+Array(1500).fill().forEach(addStar)
+
+function updateMoonPosition() {
+    const earthPosition = earth.position.clone();
+    const distanceFromEarth = 9.5;
+
+    moon.position.x = earthPosition.x + Math.cos(Date.now() * 0.0005) * distanceFromEarth;
+    moon.position.z = earthPosition.z + Math.sin(Date.now() * 0.0005) * distanceFromEarth;
+}
 
 function animate() {
     requestAnimationFrame(animate);
@@ -255,6 +274,9 @@ function animate() {
     neptune.rotation.y += 0.01 * rotationSpeedScale;
     //Pluto Rotation
     pluto.rotation.y += 0.01 * rotationSpeedScale;
+   
+
+    updateMoonPosition();
 
     controls.update();
     
