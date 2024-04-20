@@ -206,10 +206,10 @@ Array(1500).fill().forEach(addStar)
 
 function updateMoonPosition() {
     const earthPosition = earth.position.clone();
-    const distanceFromEarth = 9.5;
+    const distanceFromEarth = 9;
 
-    moon.position.x = earthPosition.x + Math.cos(Date.now() * 0.0005) * distanceFromEarth;
-    moon.position.z = earthPosition.z + Math.sin(Date.now() * 0.0005) * distanceFromEarth;
+    moon.position.x = earthPosition.x + Math.cos(Date.now() * 0.002) * distanceFromEarth;
+    moon.position.z = earthPosition.z + Math.sin(Date.now() * 0.002) * distanceFromEarth;
 }
 
 function animate() {
