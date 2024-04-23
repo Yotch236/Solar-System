@@ -15,13 +15,13 @@ document.body.appendChild(renderer.domElement);
 camera.position.setZ(30);
 
 renderer.render( scene, camera);
-//GRID HELPER
+/*GRID HELPER
 
 const size = 900;
 const divisions = 50;
 
 const gridHelper = new THREE.GridHelper(size,divisions);
-scene.add(gridHelper);
+scene.add(gridHelper);*/
 //SUN
 const sunTexture = new THREE.TextureLoader().load("Sun.png");
 
@@ -217,7 +217,7 @@ function animate() {
     //Update planet positions
     const time = Date.now() * 0.0005; //Value of speed of revolution (Can adjust)
     const orbitRadiusScale = 1; //Scale factor for the orbit radius
-    const rotationSpeedScale = 0.01; //Scale factor for the rotation speed
+    const rotationSpeedScale = 1; //Scale factor for the rotation speed
 
     //Mercury Position
     mercury.position.x = Math.cos(time * 1.5) * 35 * orbitRadiusScale;
@@ -257,7 +257,7 @@ function animate() {
  
 
     //Earth Rotation
-    earth.rotation.y += 0.02 * rotationSpeedScale;
+    earth.rotation.y += 0.05 * rotationSpeedScale;
     //Mercury Rotation
     mercury.rotation.y += 0.03 * rotationSpeedScale;
     //Venus Rotation
@@ -274,7 +274,8 @@ function animate() {
     neptune.rotation.y += 0.01 * rotationSpeedScale;
     //Pluto Rotation
     pluto.rotation.y += 0.01 * rotationSpeedScale;
-   
+   //Moon Rotation
+   moon.rotation.y += 0.05 * rotationSpeedScale;
 
     updateMoonPosition();
 
