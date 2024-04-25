@@ -217,7 +217,7 @@ function animate() {
     //Update planet positions
     const time = Date.now() * 0.0005; //Value of speed of revolution (Can adjust)
     const orbitRadiusScale = 1; //Scale factor for the orbit radius
-    const rotationSpeedScale = 1; //Scale factor for the rotation speed
+    const rotationSpeedScale = 0.01; //Scale factor for the rotation speed
 
     //Mercury Position
     mercury.position.x = Math.cos(time * 1.5) * 35 * orbitRadiusScale;
